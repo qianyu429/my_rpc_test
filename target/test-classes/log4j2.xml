@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="300" packages="com.shhxzq.fin.bankengine.common.log">
+    <Appenders>
+        <RollingRandomAccessFile name="AllFile" fileName="/Users/duanzonghai/Desktop/private/logs/rpc/all.log"
+                                 filePattern="/home/admin/logs/rpc/all-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="%d [%-5p] [%c.%method:%L] - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="500 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+            <Filters>
+                <ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="ErrorFile" fileName="/Users/duanzonghai/Desktop/private/logs/rpc/all.log"
+                                 filePattern="rpc-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="%d [%-5p] [%c.%method:%L] - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="500 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+            <Filters>
+                <ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </RollingRandomAccessFile>
+
+        <Async name="AsyncAll" includeLocation="true">
+            <AppenderRef ref="AllFile"/>
+        </Async>
+        <Async name="AsyncError" includeLocation="true">
+            <AppenderRef ref="ErrorFile"/>
+        </Async>
+
+        <Rewrite name="rewrite">
+            <BeRewritePolicy></BeRewritePolicy>
+            <AppenderRef ref="AsyncAll"/>
+            <AppenderRef ref="AsyncError"/>
+        </Rewrite>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.shhxzq.fin.tnttest" level="INFO" additivity="false">
+            <AppenderRef ref="rewrite"/>
+        </Logger>
+
+        <Root level="INFO" additivity="true">
+            <AppenderRef ref="rewrite"/>
+        </Root>
+    </Loggers>
+</Configuration>

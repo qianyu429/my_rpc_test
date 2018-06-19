@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:env.properties"
+                                  ignore-unresolvable="true"
+                                  system-properties-mode="OVERRIDE"/>
+
+    <!-- CTS -->
+    <bean id="ctsDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+          p:driverClass="${jdbc.mysql.driverClass}"
+          p:url="jdbc:mysql://${uat.datasource.ip}:3306/cts_uat"
+          p:username="${uat.datasource.username}"
+          p:password="${uat.datasource.password}"/>
+    <bean id="ctsJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="ctsDataSource"/>
+
+    <!-- CIF -->
+    <bean id="cifDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+          p:driverClass="${jdbc.mysql.driverClass}"
+          p:url="jdbc:mysql://${uat.datasource.ip}:3306/cif_uat"
+          p:username="${uat.datasource.username}"
+          p:password="${uat.datasource.password}"/>
+    <bean id="cifJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="cifDataSource"/>
+
+    <!-- PDC -->
+    <bean id="pdcDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+          p:driverClass="${jdbc.mysql.driverClass}"
+          p:url="jdbc:mysql://${uat.datasource.ip}:3306/pdc"
+          p:username="${uat.datasource.username}"
+          p:password="${uat.datasource.password}"/>
+    <bean id="pdcJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="pdcDataSource"/>
+
+    <!-- BE -->
+    <bean id="beDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+          p:driverClass="${jdbc.mysql.driverClass}"
+          p:url="jdbc:mysql://${uat.datasource.ip}:3306/be"
+          p:username="${uat.datasource.username}"
+          p:password="${uat.datasource.password}"/>
+    <bean id="beJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="beDataSource"/>
+
+    <!-- SUPERGW -->
+    <bean id="supergwDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+          p:driverClass="${jdbc.mysql.driverClass}"
+          p:url="jdbc:mysql://${uat.datasource.ip}:3306/spw"
+          p:username="${uat.datasource.username}"
+          p:password="${uat.datasource.password}"/>
+    <bean id="supergwJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="supergwDataSource"/>
+
+    <!-- BeiDou -->
+    <bean id="beidouDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+          p:driverClass="${jdbc.mysql.driverClass}"
+          p:url="jdbc:mysql://10.199.101.18:3308/beidou"
+          p:username="beidou"
+          p:password="beidou"/>
+    <bean id="beidouJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="beidouDataSource"/>
+
+    <!-- LifeApp -->
+    <bean id="lifeAppDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+          p:driverClass="${jdbc.mysql.driverClass}"
+          p:url="jdbc:mysql://${uat.datasource.ip}:3306/la"
+          p:username="${uat.datasource.username}"
+          p:password="${uat.datasource.password}"/>
+    <bean id="lifeAppJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="lifeAppDataSource"/>
+
+    <!-- points -->
+    <bean id="pointsDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+          p:driverClass="${jdbc.mysql.driverClass}"
+          p:url="jdbc:mysql://${uat.datasource.ip}:3306/points"
+          p:username="${uat.datasource.username}"
+          p:password="${uat.datasource.password}"/>
+    <bean id="pointsJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="pointsDataSource"/>
+
+    <!-- qy -->
+    <bean id="qyDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+          p:driverClass="${jdbc.mysql.driverClass}"
+          p:url="jdbc:mysql://${uat.datasource.ip}:3306/qy"
+          p:username="qy"
+          p:password="${uat.datasource.password}"/>
+    <bean id="qyJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="qyDataSource"/>
+</beans>
+

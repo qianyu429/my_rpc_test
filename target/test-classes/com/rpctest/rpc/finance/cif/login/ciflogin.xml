@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <cif_cust_base id="1003743" cust_no="0001001924" name="王一" mobile="18019281731" cert_type="0" cert_no="310101199001016617" passwd="01db150c6b4c917514cd303964f7460d" passwd_seed="zqZzY4nLry" status="N" source="A" level="0" is_verified="Y" type="1" ip="192.168.21.219" created_at="2016-08-29 15:27:40.0" updated_at="2016-08-29 15:30:38.0"/>
+</dataset>
